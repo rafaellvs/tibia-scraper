@@ -5,6 +5,7 @@ scrapes data from [TibiaWiki Fandom](https://tibia.fandom.com/wiki/Main_Page) an
 
 ## stack
 - node
+- postgres
 - sequelize
 - axios
 - cheerio
