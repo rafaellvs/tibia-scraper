@@ -5,8 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "generate:models": "node src/file-generator/models && eslint --fix src/models",
-    "generate:routes": "node src/file-generator/routes && eslint --fix src/routes"
+    "sync": "node src/index.js",
+    "generate:models": "node src/file-generator/models && eslint --fix src/models"
   },
   "dependencies": {
     "axios": "^0.19.2",
