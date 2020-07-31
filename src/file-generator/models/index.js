@@ -5,9 +5,6 @@ import { model, index } from './code-templates.js'
 import entities from '../../entities.js'
 
 const createModel = async (name, url) => {
-  const dir = 'src/models'
-  !fs.existsSync(dir) && fs.mkdirSync(dir)
-
   const attributes = await scrapeAttributes(url)
   const fileName = `src/models/${name}.js`
   const code = model(name, attributes)
@@ -21,6 +18,10 @@ const createModel = async (name, url) => {
 
 const createFiles = async () => {
   console.log('Generating files...')
+
+  // create models folder
+  const dir = 'src/models'
+  !fs.existsSync(dir) && fs.mkdirSync(dir)
 
   // create models
   entities.map(async entity =>
