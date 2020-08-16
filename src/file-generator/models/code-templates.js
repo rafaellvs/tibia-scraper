@@ -9,7 +9,7 @@ export const model = (entity, attributes) =>
     ${attributes.map(att =>
       att === 'dropped_by' || att === 'loot'
         ? `${att}: {\ntype: DataTypes.ARRAY(DataTypes.TEXT)\n}`
-        : `${att}: {\ntype: DataTypes.STRING\n}`
+        : `${att}: {\ntype: DataTypes.STRING(512)\n}`
     )}
   })
 
