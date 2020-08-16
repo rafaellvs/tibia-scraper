@@ -71,6 +71,14 @@ const entities = [
     name: 'LightSource',
     url: 'Light_Sources',
   },
+  {
+    name: 'Spell',
+    url: 'Spells',
+  },
+  {
+    name: 'Mount',
+    url: 'Mounts',
+  },
 ]
 
 export default entities
