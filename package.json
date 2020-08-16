@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": "https://github.com/rafaellvs/tibia-scraper.git",
+  "author": "Rafael Vieira <rafaellvs322@gmail.com>",
   "type": "module",
   "scripts": {
     "sync": "node src/index.js",
