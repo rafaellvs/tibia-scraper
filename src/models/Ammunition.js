@@ -6,25 +6,25 @@ const ammunition = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     lvl: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     phys_atk: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     element_atk: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     npc_price: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     dropped_by: {
       type: DataTypes.ARRAY(DataTypes.TEXT),

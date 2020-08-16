@@ -36,11 +36,15 @@ export const handleLoot = array => {
   )
 }
 
+export const handleEffect = string =>
+  string.replace(/<img.*>/g, '').trim()
+
 // format item data edge cases
 export const handleItemData = (attribute, value) => {
   if (attribute === 'dropped_by') return handleDroppedBy(value)
   else if (attribute === 'image') return handleImage(value)
   else if (attribute === 'loot') return handleLoot(value)
+  else if (attribute === 'effect') return handleEffect(value)
 
   return value || null
 }

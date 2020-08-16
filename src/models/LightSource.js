@@ -6,25 +6,25 @@ const lightsource = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     attributes: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     resist: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     color: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     radius: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     dropped_by: {
       type: DataTypes.ARRAY(DataTypes.TEXT),

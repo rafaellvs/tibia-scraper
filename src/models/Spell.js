@@ -6,31 +6,31 @@ const spell = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     words: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     prem: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     level: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     mana: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     price: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     group: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     effect: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
   })
 

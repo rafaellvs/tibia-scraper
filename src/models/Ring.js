@@ -6,34 +6,34 @@ const ring = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     arm: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     attributes: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     resist: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     duration: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     charges: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     required_level: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     required_vocation: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
   })
 

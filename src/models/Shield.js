@@ -6,31 +6,31 @@ const shield = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     def: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     weight: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     attributes: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     resist: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     imbuing_slots: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     required_level: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     required_vocation: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     dropped_by: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
