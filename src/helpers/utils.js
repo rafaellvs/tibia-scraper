@@ -8,7 +8,7 @@ export const formatAttribute = string => {
 }
 
 export const handleImage = string =>
-  string && string.match(/https:.*?"/)[0].replace(/"|amp;/g, '')
+  string.trim() && string.match(/https:.*?"/)[0].replace(/"|amp;/g, '')
 
 // scraper gets a string like 'ElfOrcOrc SpearmanTroll-Trained Salamander'
 // this treats it
