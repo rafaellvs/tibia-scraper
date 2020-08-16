@@ -6,13 +6,13 @@ const mount = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     taming_method: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
   })
 

@@ -6,16 +6,16 @@ const boss = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     exp: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     hp: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(512),
     },
     loot: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
