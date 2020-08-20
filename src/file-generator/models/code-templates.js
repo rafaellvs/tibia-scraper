@@ -45,6 +45,9 @@ export const sequelize = new Sequelize(
 //     dialect: 'postgres',
 //     protocol: 'postgres',
 //     define: { timestamps: false },
+//     pool: {
+//       max: 20,
+//     },
 //     dialectOptions: {
 //       ssl: {
 //         require: true,
