@@ -11,7 +11,7 @@ const spellbook = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING(512),
     },
-    level: {
+    lvl: {
       type: DataTypes.STRING(512),
     },
     def: {
