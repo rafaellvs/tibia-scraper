@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import scrapeAttributes from '../../scraper/scrape-attributes.js'
+import scrapeAttributes from '../../scraper/attributes/index.js'
 import { model, index } from './code-templates.js'
 import entities from '../../entities.js'
 
