@@ -1,6 +1,8 @@
 // converts attributes to snake_case and deals with edge cases
 export const formatAttribute = string => {
   if (string === 'NPC') return 'npc_price'
+  if (string === 'Rune Group') return 'group'
+  if (string === 'Level') return 'lvl'
 
   return string
     ? string.replace(/\n/g, '').replace(/\./g, '').replace(/\s/g, '_').replace(/%/g, '_mod').toLowerCase()
@@ -29,6 +31,7 @@ export const handleLoot = array => {
   if (!Array.isArray(array)) return null
 
   const loot = array.map(item => item.trim())
+
   return (
     array[0] === 'This creature drops no loot.'
       ? null
@@ -39,12 +42,16 @@ export const handleLoot = array => {
 export const handleEffect = string =>
   string.replace(/<img.*>/g, '').trim()
 
+export const handlePrem = string =>
+  string === '\u2713' ? 'yes' : 'no'
+
 // format item data edge cases
 export const handleItemData = (attribute, value) => {
   if (attribute === 'dropped_by') return handleDroppedBy(value)
   else if (attribute === 'image') return handleImage(value)
   else if (attribute === 'loot') return handleLoot(value)
   else if (attribute === 'effect') return handleEffect(value)
+  else if (attribute === 'prem') return handlePrem(value)
 
-  return value || null
+  return value ? value.trim() : null
 }

@@ -1,15 +1,15 @@
 import axios from 'axios'
 import cheerio from 'cheerio'
 
-import { handleItemData } from '../helpers/utils.js'
+import { handleItemData } from '../../helpers/utils.js'
 
-import scrapeAttributes from './scrape-attributes.js'
+import scrapeAttributes from '../attributes/index.js'
 
-const scrape = async page => {
+const scrape = async url => {
   const basePath = 'https://tibia.fandom.com/wiki/'
-  const url = basePath + page
+  const path = basePath + url
 
-  const html = await axios(url)
+  const html = await axios(path)
     .then(response => response.data)
     .catch(console.error)
 
@@ -17,20 +17,10 @@ const scrape = async page => {
   const table = $('.wikitable')
 
   // get attributes (same as model)
-  const attributes = await scrapeAttributes(page)
+  const attributes = await scrapeAttributes(url)
 
-  // if page has loot (like Creatures), html structure is different
-  const hasLoot = attributes.includes('loot')
-  const htmlLoot = table.find('.loot-table')
-  const loot = []
-  table.find('.loot-table').parent().remove()
-
-  hasLoot &&
-  htmlLoot.each(function (i, elem) {
-    loot.push(
-      $(this).text().split('\n')
-    )
-  })
+  // remove every thead from table
+  table.find('th').parent().remove()
 
   // get each row in url data table
   const htmlRows = table.find('tr')
@@ -39,7 +29,6 @@ const scrape = async page => {
     rows.push(
       $(this).text().split('\n').slice(1, -1)
     )
-    hasLoot && rows[i].push(loot[i])
   })
 
   // generate items
@@ -54,9 +43,6 @@ const scrape = async page => {
     }
     , {})
   )
-
-  // 1st item is thead
-  items.shift()
 
   return items
 }

@@ -17,13 +17,19 @@ const spell = (sequelize, DataTypes) => {
     prem: {
       type: DataTypes.STRING(512),
     },
-    level: {
+    lvl: {
+      type: DataTypes.STRING(512),
+    },
+    soul_points: {
       type: DataTypes.STRING(512),
     },
     mana: {
       type: DataTypes.STRING(512),
     },
     price: {
+      type: DataTypes.STRING(512),
+    },
+    type: {
       type: DataTypes.STRING(512),
     },
     group: {

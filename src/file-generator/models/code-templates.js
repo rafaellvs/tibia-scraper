@@ -6,10 +6,10 @@ export const model = (entity, attributes) =>
       primaryKey: true,
       autoIncrement: true,
     },
-    ${attributes.map(att =>
-      att === 'dropped_by' || att === 'loot'
-        ? `${att}: {\ntype: DataTypes.ARRAY(DataTypes.TEXT)\n}`
-        : `${att}: {\ntype: DataTypes.STRING(512)\n}`
+    ${attributes.map(attr =>
+      attr === 'dropped_by' || attr === 'loot'
+        ? `${attr}: {\ntype: DataTypes.ARRAY(DataTypes.TEXT)\n}`
+        : `${attr}: {\ntype: DataTypes.STRING(512)\n}`
     )}
   })
 
