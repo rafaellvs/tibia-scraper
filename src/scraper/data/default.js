@@ -16,20 +16,25 @@ const scrape = async url => {
   const $ = cheerio.load(html)
   const table = $('.wikitable')
 
-  // get attributes (same as model)
-  const attributes = await scrapeAttributes(url)
-
   // remove every thead from table
   table.find('th').parent().remove()
 
   // get each row in url data table
   const htmlRows = table.find('tr')
   const rows = []
-  htmlRows.each(function (i, elem) {
-    rows.push(
-      $(this).text().split('\n').slice(1, -1)
-    )
+  htmlRows.each(function (i, tr) {
+    let row = []
+
+    $(tr).find('td').each(function (i, td) {
+      row = [...row, $(td).html()]
+    })
+
+    rows.push(row)
+    row = []
   })
+
+  // get attributes (same as model)
+  const attributes = await scrapeAttributes(url)
 
   // generate items
   const items = rows.map(row =>

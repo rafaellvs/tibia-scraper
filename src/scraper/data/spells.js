@@ -31,10 +31,15 @@ const scrapeSpells = async () => {
   // get each row in url data table
   const htmlRows = $(table).find('tr')
   const rows = []
-  htmlRows.each(function (i, elem) {
-    rows.push(
-      $(this).text().split('\n').slice(1, -1)
-    )
+  htmlRows.each(function (i, tr) {
+    let row = []
+
+    $(tr).find('td').each(function (i, td) {
+      row = [...row, $(td).html()]
+    })
+
+    rows.push(row)
+    row = []
   })
 
   // generate rune spell items
