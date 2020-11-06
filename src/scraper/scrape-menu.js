@@ -14,7 +14,6 @@ const scrape = async () => {
       $(this).text().replace(/\n|\t/g, '')
     )
   })
-  console.log(menu)
 }
 
 scrape()

@@ -3,7 +3,6 @@ import scrapeDefault from './default.js'
 
 const scrapeAttributes = url => {
   if (url === 'Spells') return scrapeSpells()
-
   return scrapeDefault(url)
 }
 
