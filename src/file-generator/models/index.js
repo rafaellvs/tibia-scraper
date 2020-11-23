@@ -1,13 +1,31 @@
 import fs from 'fs'
 
 import scrapeAttributes from '../../scraper/attributes/index.js'
-import { model, index } from './code-templates.js'
 import entities from '../../entities.js'
 
+import indexModel from './templates/index.js'
+import creatureModel from './templates/creature.js'
+import itemModel from './templates/item.js'
+import spellModel from './templates/spell.js'
+
+const selectModel = (name, url, attributes) => {
+  switch (url) {
+    case 'List_of_Creatures':
+    case 'Bosses':
+      return creatureModel(name)
+
+    case 'Spells':
+      return spellModel(name)
+
+    default:
+      return itemModel(name, attributes)
+  }
+}
+
 const createModel = async (name, url) => {
-  const attributes = await scrapeAttributes(url)
   const fileName = `src/models/${name}.js`
-  const code = model(name, attributes)
+  const attributes = await scrapeAttributes(url)
+  const code = selectModel(name, url, attributes)
 
   fs.writeFile(
     fileName,
@@ -29,7 +47,7 @@ const createFiles = async () => {
   )
 
   // create index
-  const code = index(entities)
+  const code = indexModel(entities)
   fs.writeFile(
     'src/models/index.js',
     code,
