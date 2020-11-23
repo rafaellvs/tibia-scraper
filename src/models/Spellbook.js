@@ -6,31 +6,61 @@ const spellbook = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     image: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     lvl: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     def: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     skill_boost: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     resistances: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     imbuing_slots: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     weight: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     dropped_by: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
+    },
+    look: {
+      type: DataTypes.TEXT(),
+    },
+    notes: {
+      type: DataTypes.TEXT(),
+    },
+    history: {
+      type: DataTypes.TEXT(),
+    },
+    stackable: {
+      type: DataTypes.BOOLEAN(),
+    },
+    marketable: {
+      type: DataTypes.BOOLEAN(),
+    },
+    usable: {
+      type: DataTypes.BOOLEAN(),
+    },
+    imbuable: {
+      type: DataTypes.BOOLEAN(),
+    },
+    duration: {
+      type: DataTypes.TEXT(),
+    },
+    sellTo: {
+      type: DataTypes.ARRAY(DataTypes.JSON()),
+    },
+    buyFrom: {
+      type: DataTypes.ARRAY(DataTypes.JSON()),
     },
   })
 

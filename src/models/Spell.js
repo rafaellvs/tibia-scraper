@@ -6,37 +6,58 @@ const spell = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     image: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     words: {
-      type: DataTypes.STRING(512),
-    },
-    prem: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     lvl: {
-      type: DataTypes.STRING(512),
-    },
-    soul_points: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
     mana: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
     },
-    price: {
-      type: DataTypes.STRING(512),
+    soul: {
+      type: DataTypes.TEXT(),
     },
-    type: {
-      type: DataTypes.STRING(512),
+    dmg_type: {
+      type: DataTypes.TEXT(),
     },
     group: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
+    },
+    cooldown: {
+      type: DataTypes.TEXT(),
+    },
+    cooldown_group: {
+      type: DataTypes.TEXT(),
+    },
+    vocation: {
+      type: DataTypes.ARRAY(DataTypes.TEXT()),
+    },
+    premmium: {
+      type: DataTypes.BOOLEAN(),
+    },
+    promotion: {
+      type: DataTypes.BOOLEAN(),
+    },
+    cost: {
+      type: DataTypes.TEXT(),
     },
     effect: {
-      type: DataTypes.STRING(512),
+      type: DataTypes.TEXT(),
+    },
+    notes: {
+      type: DataTypes.TEXT(),
+    },
+    history: {
+      type: DataTypes.TEXT(),
+    },
+    learn_from: {
+      type: DataTypes.ARRAY(DataTypes.JSON()),
     },
   })
 

@@ -3,7 +3,7 @@ import cheerio from 'cheerio'
 
 import { formatAttribute } from '../../helpers/utils.js'
 
-const scrapeDefault = async url => {
+const scrapeItemAttributes = async url => {
   const html = await axios(`https://tibia.fandom.com/wiki/${url}`)
     .then(response => response.data)
   const $ = cheerio.load(html)
@@ -29,4 +29,4 @@ const scrapeDefault = async url => {
   return [...noDuplicates]
 }
 
-export default scrapeDefault
+export default scrapeItemAttributes

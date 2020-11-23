@@ -1,25 +1,4 @@
-export const model = (entity, attributes) =>
-`const ${entity.toLowerCase()} = (sequelize, DataTypes) => {
-  const ${entity} = sequelize.define('${entity.toLowerCase()}', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    ${attributes.map(attr =>
-      attr === 'dropped_by' || attr === 'loot'
-        ? `${attr}: {\ntype: DataTypes.ARRAY(DataTypes.TEXT)\n}`
-        : `${attr}: {\ntype: DataTypes.STRING(512)\n}`
-    )}
-  })
-
-  return ${entity}
-}
-
-export default ${entity.toLowerCase()}
-`
-
-export const index = entities =>
+const indexModel = entities =>
 `// import models
 ${entities.map(entity =>
   `import ${entity.name.toLowerCase()} from './${entity.name}.js'\n`
@@ -65,3 +44,5 @@ const models = {
 
 export default models
 `
+
+export default indexModel

@@ -2,43 +2,49 @@ import 'dotenv/config.js'
 
 import models, { sequelize } from './models/index.js'
 
-import scrapeData from './scraper/data/index.js'
+import scrapeData from './scraper/list/index.js'
 
 import entities from './entities.js'
 
-// add tables
-// add { force: true } to force delete
-const syncModels = async () =>
-  await sequelize.sync({ force: true })
-    .catch(err => console.log(err))
+// insert one entity into db
+const insertOne = async entity => {
+  const name = entity.name
+  const url = entity.url
 
-// insert all into db
-const insertAll = async () => {
-  entities.map(async entity => {
-    const items = await scrapeData(entity.url)
+  console.log()
+  console.log('******************')
+  console.log(`Scraping ${url}`)
+  await scrapeData(url).then(async items => {
+    console.log(`Done scraping ${url}`)
 
-    items.map(async item =>
-      await models[entity.name].create(item)
-        .catch(err => console.log(err))
-    )
+    await models[name].sync({ force: true })
+      .then(console.log(`\nConnected at database ${name} entity\n`))
+      .catch(err => console.log(`\nConnection to database ${name} entity failed: ${err}\n`))
+
+    console.log(`\nInserting items into ${name} entity\n`)
+    await models[name].bulkCreate(items)
+      .then(() => {
+        console.log()
+        console.log('Insertion done')
+        console.log(`Succesfully inserted ${items.length} items at ${name} entity`)
+      })
+      .catch(err => console.log(`\nError on insertion at ${name} entity: ${err}\n`))
   })
 }
 
-// insert one entity by its model name
-const insertOne = async name => {
-  const entity = entities.find(ent => ent.name === name)
-  const items = await scrapeData(entity.url)
-
-  items.map(async item =>
-    await models[entity.name].create(item)
-      .catch(err => console.log(err))
-  )
+// insert all into db
+const insertAll = async () => {
+  for (let i = 0; i < entities.length; i++) {
+    await insertOne(entities[i])
+  }
 }
 
 const main = async () => {
-  await syncModels()
+  // await insertOne(entities.find(entity => entity.name === 'Club'))
   await insertAll()
-  // await insertOne('Spell')
+
+  sequelize.close()
+    .then(console.log('Connection closed'))
 }
 
 main()

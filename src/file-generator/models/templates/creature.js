@@ -1,5 +1,6 @@
-const creature = (sequelize, DataTypes) => {
-  const Creature = sequelize.define('creature', {
+const creatureModel = entity =>
+`const ${entity.toLowerCase()} = (sequelize, DataTypes) => {
+  const ${entity} = sequelize.define('${entity.toLowerCase()}', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -85,7 +86,10 @@ const creature = (sequelize, DataTypes) => {
     },
   })
 
-  return Creature
+  return ${entity}
 }
 
-export default creature
+export default ${entity.toLowerCase()}
+`
+
+export default creatureModel

@@ -5,7 +5,9 @@ import { handleItemData } from '../../helpers/utils.js'
 
 import scrapeAttributes from '../attributes/index.js'
 
-const scrape = async url => {
+import scrapeSingleItem from '../single/item.js'
+
+const scrapeItemList = async url => {
   const basePath = 'https://tibia.fandom.com/wiki/'
   const path = basePath + url
 
@@ -49,7 +51,18 @@ const scrape = async url => {
     , {})
   )
 
-  return items
+  // merge items with its single article data
+  const merged = await Promise.all(
+    items.map(async item => {
+      const singleData = await scrapeSingleItem(item.name.replace(' ', '_'))
+      return {
+        ...item,
+        ...singleData,
+      }
+    })
+  )
+
+  return merged
 }
 
-export default scrape
+export default scrapeItemList

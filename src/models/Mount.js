@@ -14,6 +14,18 @@ const mount = (sequelize, DataTypes) => {
     taming_method: {
       type: DataTypes.STRING(512),
     },
+    look: {
+      type: DataTypes.STRING(512),
+    },
+    notes: {
+      type: DataTypes.STRING(512),
+    },
+    sellTo: {
+      type: DataTypes.ARRAY(DataTypes.JSON()),
+    },
+    buyFrom: {
+      type: DataTypes.ARRAY(DataTypes.JSON()),
+    },
   })
 
   return Mount

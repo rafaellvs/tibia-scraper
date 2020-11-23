@@ -1,5 +1,6 @@
-const legs = (sequelize, DataTypes) => {
-  const Legs = sequelize.define('legs', {
+const spellModel = entity =>
+`const ${entity.toLowerCase()} = (sequelize, DataTypes) => {
+  const ${entity} = sequelize.define('${entity.toLowerCase()}', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,31 +12,43 @@ const legs = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.TEXT(),
     },
-    arm: {
+    words: {
       type: DataTypes.TEXT(),
     },
-    weight: {
+    lvl: {
       type: DataTypes.TEXT(),
     },
-    attributes: {
+    mana: {
       type: DataTypes.TEXT(),
     },
-    resist: {
+    soul: {
       type: DataTypes.TEXT(),
     },
-    imbuing_slots: {
+    dmg_type: {
       type: DataTypes.TEXT(),
     },
-    required_level: {
+    group: {
       type: DataTypes.TEXT(),
     },
-    required_vocation: {
+    cooldown: {
       type: DataTypes.TEXT(),
     },
-    dropped_by: {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
+    cooldown_group: {
+      type: DataTypes.TEXT(),
     },
-    look: {
+    vocation: {
+      type: DataTypes.ARRAY(DataTypes.TEXT()),
+    },
+    premmium: {
+      type: DataTypes.BOOLEAN(),
+    },
+    promotion: {
+      type: DataTypes.BOOLEAN(),
+    },
+    cost: {
+      type: DataTypes.TEXT(),
+    },
+    effect: {
       type: DataTypes.TEXT(),
     },
     notes: {
@@ -44,30 +57,15 @@ const legs = (sequelize, DataTypes) => {
     history: {
       type: DataTypes.TEXT(),
     },
-    stackable: {
-      type: DataTypes.BOOLEAN(),
-    },
-    marketable: {
-      type: DataTypes.BOOLEAN(),
-    },
-    usable: {
-      type: DataTypes.BOOLEAN(),
-    },
-    imbuable: {
-      type: DataTypes.BOOLEAN(),
-    },
-    duration: {
-      type: DataTypes.TEXT(),
-    },
-    sellTo: {
-      type: DataTypes.ARRAY(DataTypes.JSON()),
-    },
-    buyFrom: {
+    learn_from: {
       type: DataTypes.ARRAY(DataTypes.JSON()),
     },
   })
 
-  return Legs
+  return ${entity}
 }
 
-export default legs
+export default ${entity.toLowerCase()}
+`
+
+export default spellModel

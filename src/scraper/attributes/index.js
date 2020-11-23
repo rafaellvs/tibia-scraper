@@ -1,9 +1,7 @@
-import scrapeSpells from './spells.js'
-import scrapeDefault from './default.js'
+import scrapeItemAttributes from './item.js'
 
 const scrapeAttributes = url => {
-  if (url === 'Spells') return scrapeSpells()
-  return scrapeDefault(url)
+  return scrapeItemAttributes(url)
 }
 
 export default scrapeAttributes

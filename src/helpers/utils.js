@@ -16,19 +16,24 @@ export const formatAttribute = string => {
     : 'image'
 }
 
-// strip html tags
-export const stripHtml = string =>
+// strips html tags and special characters, inserts space after periods ('.'), trims it
+export const formatString = string =>
   string
     .replace(/(<([^>]+)>)/g, '')
-    .replace('&apos;', '\'')
-    .replace('\n', '')
+    .replace(/&apos;/g, '\'')
+    .replace(/\n/g, '')
+    .replace(/\t/g, '')
+    .replace(/\.([A-Z])/g, '. $1')
+    .trim()
 
 // handle name - removes <a> tag
 export const handleName = string =>
-  stripHtml(string)
+  formatString(string)
 
 export const handleImage = string =>
-  string.trim() && string.match(/https:.*?"/)[0].replace(/"|amp;/g, '')
+  string.trim() &&
+  string.match(/https:.*?"/) &&
+  string.match(/https:.*?"/)[0].replace(/"|amp;/g, '')
 
 // gets ul returned from loottable, loops through <li> and fill droppedBy array
 export const handleLootTable = string => {
@@ -48,11 +53,10 @@ export const handleLootTable = string => {
   )
 }
 
-export const handleEffect = string =>
-  stripHtml(string)
-
-export const handlePrem = string =>
-  string === '\u2713' ? 'yes' : 'no'
+// converts checkmarks (x or v) into bool
+export const handleCheckmark = string =>
+  string === '\u2713' ||
+  string === '&#x2713;'
 
 // format item data edge cases
 export const handleItemData = (attribute, value) => {
@@ -60,22 +64,13 @@ export const handleItemData = (attribute, value) => {
     case 'name':
       return handleName(value)
 
-    case 'dropped_by':
-      return handleLootTable(value)
-
     case 'image':
       return handleImage(value)
 
-    case 'loot':
+    case 'dropped_by':
       return handleLootTable(value)
 
-    case 'effect':
-      return handleEffect(value)
-
-    case 'prem':
-      return handlePrem(value)
-
     default:
-      return value ? stripHtml(value).trim() : null
+      return value ? formatString(value) : null
   }
 }

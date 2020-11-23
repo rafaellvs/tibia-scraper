@@ -18,7 +18,6 @@ import amulet from './Amulet.js'
 import ring from './Ring.js'
 import lightsource from './LightSource.js'
 import spell from './Spell.js'
-import mount from './Mount.js'
 
 import sequelizePKG from 'sequelize'
 const { Sequelize, DataTypes } = sequelizePKG
@@ -72,7 +71,6 @@ const models = {
   Ring: ring(sequelize, DataTypes),
   LightSource: lightsource(sequelize, DataTypes),
   Spell: spell(sequelize, DataTypes),
-  Mount: mount(sequelize, DataTypes),
 
 }
 
